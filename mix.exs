@@ -66,6 +66,7 @@ defmodule NervesBeaglebonePruCompilerExample.MixProject do
   # Specify the version of the System to use for each target
   def system("bbb"), do: {:nerves_system_bbb, "~> 0.16.0", runtime: false}
 
+  # Remember to run `source nerves_system_bbb_pru/build/nerves-env.sh` when building custom base image!
   def system("bbb_custom") do
     {:nerves_system_bbb_pru,
      branch: "master", git: "https://github.com/elcritch/nerves_system_bbb.git", runtime: false}
