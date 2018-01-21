@@ -18,7 +18,14 @@ defmodule NervesBeaglebonePruCompilerExample.MixProject do
       app: :nerves_beaglebone_pru_compiler_example,
       version: "0.1.0",
       elixir: "~> 1.6",
+      target: @target,
+      archives: [nerves_bootstrap: "~> 0.6"],
+      deps_path: "deps/#{@target}",
+      build_path: "_build/#{@target}",
+      lockfile: "mix.lock.#{@target}",
+      build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
+      aliases: aliases(@target),
       deps: deps()
     ]
   end
