@@ -26,8 +26,8 @@ end
 # when running `mix release`, the first release in the file
 # will be used by default
 
-release :blinky do
-  set version: current_version(:blinky)
+release :nerves_beaglebone_pru_compiler_example do
+  set version: current_version(:nerves_beaglebone_pru_compiler_example)
   if System.get_env("NERVES_SYSTEM") do
     set dev_mode: false
     set include_src: false

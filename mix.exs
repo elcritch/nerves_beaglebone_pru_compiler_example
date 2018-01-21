@@ -67,10 +67,8 @@ defmodule NervesBeaglebonePruCompilerExample.MixProject do
   def system("bbb"), do: {:nerves_system_bbb, "~> 0.16.0", runtime: false}
 
   def system("bbb_custom") do
-    [
-      {:nerves_system_bbb, "~> 0.16.4-pru",
-       branch: "master", github: "elcritch/nerves_system_bbb"}
-    ]
+    {:nerves_system_bbb_pru,
+     branch: "master", git: "https://github.com/elcritch/nerves_system_bbb.git", runtime: false}
   end
 
   def system(target), do: Mix.raise("Unknown MIX_TARGET: #{target}")
