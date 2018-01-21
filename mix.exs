@@ -65,6 +65,14 @@ defmodule NervesBeaglebonePruCompilerExample.MixProject do
 
   # Specify the version of the System to use for each target
   def system("bbb"), do: {:nerves_system_bbb, "~> 0.16.0", runtime: false}
+
+  def system("bbb_custom") do
+    [
+      {:nerves_system_bbb, "~> 0.16.4-pru",
+       branch: "master", github: "elcritch/nerves_system_bbb"}
+    ]
+  end
+
   def system(target), do: Mix.raise("Unknown MIX_TARGET: #{target}")
 
   # We do not invoke the Nerves Env when running on the Host
