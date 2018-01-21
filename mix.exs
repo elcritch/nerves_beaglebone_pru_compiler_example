@@ -23,6 +23,8 @@ defmodule NervesBeaglebonePruCompilerExample.MixProject do
       deps_path: "deps/#{@target}",
       build_path: "_build/#{@target}",
       lockfile: "mix.lock.#{@target}",
+      compilers: [:pru_make] ++ Mix.compilers(),
+      make_clean: ["clean"],
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       aliases: aliases(@target),
@@ -55,11 +57,14 @@ defmodule NervesBeaglebonePruCompilerExample.MixProject do
   def deps("host"), do: []
 
   def deps(target) do
+    IO.puts "deps target"
     [
       system(target),
       {:bootloader, "~> 0.1"},
       {:nerves_runtime, "~> 0.4"},
-      {:nerves_leds, "~> 0.7"}
+      {:nerves_leds, "~> 0.7"},
+      {:nerves_pru_icss, ">= 0.0.0", github: "elcritch/nerves_pru_icss"},
+      {:elixir_ale, "~> 1.0.2"}
     ]
   end
 

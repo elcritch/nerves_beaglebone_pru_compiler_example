@@ -1,0 +1,12 @@
+CFLAGS+=-Wall -Werror
+LDLIBS+= -lpthread -lprussdrv
+
+all: example.bin example
+
+clean:
+	rm -f pru-helloworld/example pru-helloworld/*.o pru-helloworld/*.bin
+
+example.bin: pru-helloworld/example.p
+	pasm -b $^
+
+example: pru-helloworld/example.o
